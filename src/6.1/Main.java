@@ -5,4 +5,5 @@ public class Main {
 
         DictionaryView.launch(DictionaryView.class);
     }
+
 }
