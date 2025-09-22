@@ -32,6 +32,7 @@ public class ConverterGUI extends Application {
         currencyTo.getItems().addAll(currencies);
         Label labelFrom = new Label("From");
         Label labelTo = new Label("To");
+        Label title = new Label("Currency Converter");
 
         currencyFrom.setValue("USD");  // default selected item
         currencyTo.setValue("EUR");    // default selected item
@@ -76,13 +77,15 @@ public class ConverterGUI extends Application {
         HBox.getChildren().add(buttonVBox);
         HBox.getChildren().add(currencyValueToVBox);
         HBox.getChildren().add(currencyToVBox);
-        HBox.setAlignment(Pos.CENTER);
 
         VBox container = new VBox();
+        container.getChildren().add(title);
         container.getChildren().add(HBox);
         container.getChildren().add(warning);
+        HBox.setAlignment(Pos.CENTER);
 
         Scene scene = new Scene(container);
+        stage.setTitle("Currency Converter");
         stage.setScene(scene);
         stage.show();
 
