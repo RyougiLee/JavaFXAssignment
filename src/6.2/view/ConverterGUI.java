@@ -37,6 +37,9 @@ public class ConverterGUI extends Application {
         currencyFrom.setValue("USD");  // default selected item
         currencyTo.setValue("EUR");    // default selected item
 
+        BorderPane titlePane = new BorderPane();
+        titlePane.setBottom(title);
+        BorderPane.setAlignment(title,Pos.CENTER);
 
         BorderPane labelFromPane = new BorderPane();
         labelFromPane.setBottom(labelFrom);
@@ -47,8 +50,6 @@ public class ConverterGUI extends Application {
         BorderPane.setAlignment(labelTo, Pos.BOTTOM_RIGHT);
 
         Button button = new Button("Convert");
-
-        Insets insets = new Insets(10,10,10,10);
 
         VBox currencyValueFromVBox = new VBox();
         currencyValueFromVBox.getChildren().add(new Label(""));
@@ -79,7 +80,7 @@ public class ConverterGUI extends Application {
         HBox.getChildren().add(currencyToVBox);
 
         VBox container = new VBox();
-        container.getChildren().add(title);
+        container.getChildren().add(titlePane);
         container.getChildren().add(HBox);
         container.getChildren().add(warning);
         HBox.setAlignment(Pos.CENTER);
