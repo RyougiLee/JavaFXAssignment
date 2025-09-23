@@ -34,15 +34,15 @@ public class PetController {
                     double petX = pet.getX();
                     double petY = pet.getY();
 
-                    if(petX < mouseX){
+                    if(petX < mouseX -1){
                         petX += 1;
-                    } else if (petX > mouseX) {
+                    } else if (petX > mouseX +1) {
                         petX -= 1;
                     }
 
-                    if(petY < mouseY){
+                    if(petY < mouseY -1){
                         petY += 1;
-                    } else if (petY > mouseY){
+                    } else if (petY > mouseY +1){
                         petY -= 1;
                     }
 
