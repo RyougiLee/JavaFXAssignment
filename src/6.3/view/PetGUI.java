@@ -1,5 +1,6 @@
 package view;
 
+import controller.PetController;
 import javafx.application.Application;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -15,8 +16,12 @@ public class PetGUI extends Application{
     double imgWidth = 150;
     double imgHeight = 150;
     Image image = new Image("img/headcrab.png");
-    Canvas canvas = new Canvas(1000,1000);
+    Canvas canvas = new Canvas(500,500);
     GraphicsContext gc = canvas.getGraphicsContext2D();
+    double mouseX;
+    double mouseY;
+
+    PetController controller;
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -26,25 +31,35 @@ public class PetGUI extends Application{
         draw();
 
         root.getChildren().addAll(canvas);
-        Scene scene = new Scene(root, 1000, 1000);
+        Scene scene = new Scene(root, 500, 500);
 
         stage.setScene(scene);
         stage.show();
 
-        canvas.setOnMouseMoved(e -> {
-            double mouseX = e.getX();
-            double mouseY = e.getY();
+        canvas.setOnMouseEntered(e -> {
 
-            if(mouseX >= imgX && mouseX<= imgX + imgWidth && mouseY >= imgY && mouseY <= imgY + imgHeight){
-
-            }
-
+            controller.start();
         });
+
+        canvas.setOnMouseMoved(e -> {
+            mouseX = e.getX();
+            mouseY = e.getY();
+        });
+
+        canvas.setOnMouseExited(e -> {
+            controller.stop();
+        });
+
 
     }
 
+    public void init(){
+        controller = new PetController(this);
+        controller.move();
+    }
+
     public void draw(){
-        gc.clearRect(0, 0, 1000, 1000);
+        gc.clearRect(0, 0, 500, 500);
         gc.drawImage(image, imgX, imgY, imgWidth, imgHeight);
     }
 
@@ -65,6 +80,10 @@ public class PetGUI extends Application{
     public synchronized double getImgY(){
         return imgY;
     }
+
+    public synchronized double getMouseX() {return mouseX;}
+
+    public synchronized double getMouseY() {return mouseY;}
 
 
 }
