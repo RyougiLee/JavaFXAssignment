@@ -5,10 +5,14 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import view.NoteGUI;
 import javafx.fxml.FXML;
+import model.Note;
+import model.Notebook;
 
 import java.util.Locale;
 
 public class NoteController {
+
+    Notebook notebook = new Notebook();
 
     @FXML
     private BorderPane inputContainer;
@@ -29,6 +33,9 @@ public class NoteController {
     private void addNote(){
         String title = inputTitle.getText();
         String content = inputContent.getText();
-        notebookContainer.getItems().add(title +" - " +content);
+
+        notebook.add(new Note(title,content));
+
+        notebookContainer.getItems().setAll(notebook.get());
     }
 }
