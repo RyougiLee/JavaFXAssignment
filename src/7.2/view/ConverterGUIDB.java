@@ -1,6 +1,6 @@
 package view;
 
-import controller.ConverterControllerDB;
+import application.ConverterApp;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -15,15 +15,17 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
+
 public class ConverterGUIDB extends Application {
 
     TextField currencyValueFrom = new TextField();
     TextField currencyValueTo = new TextField();
-    private ConverterControllerDB controller;
+    private ConverterApp controller;
 
     Label warning = new Label();
 
-    String[] currencies = {"USD","GDP","EUR","CNY","JPY"};
+    ArrayList <String> currencies = new ArrayList<>();
 
     ChoiceBox currencyFrom = new ChoiceBox();
     ChoiceBox currencyTo = new ChoiceBox();
@@ -117,7 +119,7 @@ public class ConverterGUIDB extends Application {
 
     @Override
     public void init() throws Exception {
-        controller = new ConverterControllerDB(this);
+        controller = new ConverterApp(this);
     }
 
     public String getCurrencyFrom(){
@@ -138,6 +140,10 @@ public class ConverterGUIDB extends Application {
 
     public void setWarning(String text){
         warning.setText(text);
+    }
+
+    public void addChoiceBox(String name){
+        currencies.add(name);
     }
 }
 class ConverterTest{
