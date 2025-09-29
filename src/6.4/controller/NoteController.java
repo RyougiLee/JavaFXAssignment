@@ -7,7 +7,7 @@ import view.NoteGUI;
 import javafx.fxml.FXML;
 import model.Note;
 import model.Notebook;
-
+import javafx.collections.ObservableList;
 import java.util.Locale;
 
 public class NoteController {
@@ -36,6 +36,11 @@ public class NoteController {
 
         notebook.add(new Note(title,content));
 
+        ObservableList selectedIndices = notebookContainer.getSelectionModel().getSelectedIndices();
+
+        System.out.println(selectedIndices);
+
         notebookContainer.getItems().setAll(notebook.get());
+
     }
 }
