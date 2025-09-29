@@ -10,7 +10,7 @@ public class NoteGUI extends Application{
 
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/note_view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/resources/note_view.fxml"));
         Parent root = fxmlLoader.load();
 
         stage.setScene(new Scene(root));

@@ -8,7 +8,7 @@ CREATE TABLE CURRENCY(
 	id INT NOT NULL AUTO_INCREMENT,
 	currency_name VARCHAR(20) NOT NULL,
 	abbr_name VARCHAR(10) NOT NULL,
-	rate_to_usd DECIMAL NOT NULL,
+	rate_to_usd FLOAT NOT NULL,
 	PRIMARY KEY (id)
 );
 
