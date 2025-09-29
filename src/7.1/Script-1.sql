@@ -20,7 +20,7 @@ INSERT INTO CURRENCY(currency_name, abbr_name, rate_to_usd) VALUES
 	('New Taiwan Dollar', 'NTD', 0.033),
 	('Hong Kong Dollar', 'HKD', 0.13),
 	('Australian dollar', 'AUD', 0.65),
-	('Canadian Dollar', 'AUD', 0.72);
+	('Canadian Dollar', 'CAD', 0.72);
 
 DROP USER IF EXISTS 'appuser'@'localhost';
 
