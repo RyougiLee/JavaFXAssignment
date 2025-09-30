@@ -32,8 +32,6 @@ public class ConverterGUIDB extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        currencyFrom.getItems().addAll(currencies);
-        currencyTo.getItems().addAll(currencies);
         Label labelFrom = new Label("From");
         Label labelTo = new Label("To");
         Label title = new Label("Currency Converter");
@@ -75,24 +73,80 @@ public class ConverterGUIDB extends Application {
         currencyToVBox.getChildren().add(labelToPane);
         currencyToVBox.getChildren().add(currencyTo);
 
-        HBox HBox = new HBox();
-        HBox.setSpacing(10);
-        HBox.getChildren().add(currencyValueFromVBox);
-        HBox.getChildren().add(currencyFromVBox);
-        HBox.getChildren().add(buttonVBox);
-        HBox.getChildren().add(currencyValueToVBox);
-        HBox.getChildren().add(currencyToVBox);
+        HBox Hbox = new HBox();
+        Hbox.setSpacing(10);
+        Hbox.getChildren().add(currencyValueFromVBox);
+        Hbox.getChildren().add(currencyFromVBox);
+        Hbox.getChildren().add(buttonVBox);
+        Hbox.getChildren().add(currencyValueToVBox);
+        Hbox.getChildren().add(currencyToVBox);
+
+        Button addButton = new Button("Add currency");
+        BorderPane addButtonPane = new BorderPane();
+        addButtonPane.setCenter(addButton);
 
         VBox container = new VBox();
         container.getChildren().add(titlePane);
-        container.getChildren().add(HBox);
+        container.getChildren().add(Hbox);
         container.getChildren().add(warning);
-        HBox.setAlignment(Pos.CENTER);
+        container.getChildren().add(addButtonPane);
+        Hbox.setAlignment(Pos.CENTER);
 
         Scene scene = new Scene(container);
         stage.setTitle("Currency Converter");
         stage.setScene(scene);
         stage.show();
+
+        addButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                Stage newStage = new Stage();
+
+                HBox nameBox = new HBox();
+                nameBox.getChildren().add(new Label("Currency Name: "));
+                TextField nameValue = new TextField();
+                nameBox.getChildren().add(nameValue);
+
+                HBox abbrBox = new HBox();
+                abbrBox.getChildren().add(new Label("Abbreviation Name: "));
+                TextField abbrValue = new TextField();
+                abbrBox.getChildren().add(abbrValue);
+
+                HBox rateBox = new HBox();
+                rateBox.getChildren().add(new Label("Rate to USD: "));
+                TextField rateValue = new TextField();
+                rateBox.getChildren().add(rateValue);
+
+                BorderPane currencyButtonPane = new BorderPane();
+                Button currencyButton = new Button("Add currency");
+                currencyButtonPane.setCenter(currencyButton);
+
+                Label warning = new Label();
+
+                VBox container = new VBox();
+                container.getChildren().addAll(nameBox,abbrBox,rateBox,currencyButtonPane,warning);
+
+                Scene scene = new Scene(container);
+                newStage.setScene(scene);
+
+                currencyButton.setOnAction(e -> {
+                    try{
+                        String name = nameValue.getText();
+                        String abbr_name = abbrValue.getText();
+                        double rate_to_usd = Double.parseDouble(rateValue.getText());
+                        controller.addNewCurrency(name,abbr_name,rate_to_usd);
+                        warning.setText("");
+                        newStage.hide();
+                    }
+                    catch (Exception ex){
+                        warning.setText("Invalid input value");
+                    }
+                });
+
+                newStage.showAndWait();
+                controller.update();
+            }
+        });
 
         button.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -144,6 +198,14 @@ public class ConverterGUIDB extends Application {
 
     public void addChoiceBox(String name){
         currencies.add(name);
+        currencyFrom.getItems().add(name);
+        currencyTo.getItems().add(name);
+    }
+
+    public void resetChoiceBox(){
+        currencies.clear();
+        currencyFrom.getItems().clear();
+        currencyTo.getItems().clear();
     }
 }
 class ConverterTest{

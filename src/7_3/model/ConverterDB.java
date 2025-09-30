@@ -10,6 +10,8 @@ public class ConverterDB {
         database.put(currency, rate);
     }
 
+    public void reset(){database.clear();}
+
     public Double getRate(String currencyFrom, String currencyTo ){
         Double rateFrom = database.get(currencyFrom);
         Double rateTo = 1/database.get(currencyTo);

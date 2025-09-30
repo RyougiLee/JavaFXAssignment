@@ -14,4 +14,11 @@ public class ConverterDao {
         List<Currency> emps = em.createQuery("select c from Currency c").getResultList();
         return emps;
     }
+
+    public void persist(Currency currency){
+        EntityManager em = datasource.MariaDbJpaConnection.getInstance();
+        em.getTransaction().begin();
+        em.persist(currency);
+        em.getTransaction().commit();
+    }
 }
