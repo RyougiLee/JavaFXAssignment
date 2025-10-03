@@ -12,19 +12,11 @@
     </content>
     <content url="file://$MODULE_DIR$" dumb="true">
       <sourceFolder url="file://$MODULE_DIR$/src/7_3/resources" type="java-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/src/7_4" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/8_1" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/simulator_test" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/src/6.1" />
+      <excludeFolder url="file://$MODULE_DIR$/src/6.2" />
       <excludeFolder url="file://$MODULE_DIR$/src/7.2" />
-      <excludeFolder url="file://$MODULE_DIR$/src/7_3" />
     </content>
-  </component>
-  <component name="FacetManager">
-    <facet type="jpa" name="JPA">
-      <configuration>
-        <setting name="validation-enabled" value="true" />
-        <datasource-mapping />
-        <naming-strategy-map />
-        <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/src/7_4/resources/META-INF/persistence.xml" />
-      </configuration>
-    </facet>
   </component>
 </module>
