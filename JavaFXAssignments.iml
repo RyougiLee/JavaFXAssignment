@@ -16,6 +16,7 @@
       <sourceFolder url="file://$MODULE_DIR$/src/8_2" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/simulator_test" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/8_3" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/8_4" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/src/6.1" />
       <excludeFolder url="file://$MODULE_DIR$/src/6.2" />
       <excludeFolder url="file://$MODULE_DIR$/src/7.2" />
